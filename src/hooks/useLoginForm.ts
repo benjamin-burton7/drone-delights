@@ -1,3 +1,4 @@
+// hooks/useLoginForm.ts
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
@@ -6,25 +7,18 @@ import { loginSchema } from "../validators/loginSchema";
 
 // Custom hook for managing login form state, validation, and submission
 export function useLoginForm() {
-  // Controlled input state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // Error state for form validation or server response
   const [error, setError] = useState("");
 
-  // Access global user setter
   const { setUser } = useContext(UserContext);
-
-  // React Router navigation
   const navigate = useNavigate();
 
-  // Handle form submission
+  // Handles login form submission
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(""); // Reset error state
+    setError("");
 
-    // Validate input using Zod schema
     const validation = loginSchema.safeParse({ email, password });
     if (!validation.success) {
       setError(validation.error.errors[0].message);
@@ -32,10 +26,8 @@ export function useLoginForm() {
     }
 
     try {
-      // Attempt login
       const result = await UserService.login(email, password);
 
-      // On success: set user, persist session, redirect to home
       if (result.success && result.user) {
         setUser(result.user);
         localStorage.setItem("currentUser", JSON.stringify(result.user));
@@ -44,12 +36,12 @@ export function useLoginForm() {
       } else {
         setError(result.error || "Inloggningen misslyckades.");
       }
-    } catch (error) {
-      console.error("Login error:", error);
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Något gick fel vid inloggningen.");
     }
   };
 
-  // Return form state, handlers, and status flags to consuming component
   return {
     email,
     setEmail,

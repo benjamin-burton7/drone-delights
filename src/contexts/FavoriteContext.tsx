@@ -1,5 +1,12 @@
-import { createContext, useState, useContext, useEffect } from "react";
-import type { ReactNode } from "react";
+// contexts/FavoriteContext.tsx
+import {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  type ReactNode,
+} from "react";
+
 import { UserContext } from "./UserContext";
 import { FavoriteService } from "../services/FavoriteService";
 
@@ -10,55 +17,44 @@ interface FavoriteContextType {
   toggleFavorite: (productId: number) => void;
 }
 
-// Create context with default empty implementations
+// Create the context with default (non-functional) values
 export const FavoriteContext = createContext<FavoriteContextType>({
   favorites: [],
   isFavorite: () => false,
   toggleFavorite: () => {},
 });
 
-// Provides favorite functionality to children components
+// Provider component for managing favorite products
 export const FavoriteProvider = ({ children }: { children: ReactNode }) => {
   const [favorites, setFavorites] = useState<number[]>([]);
 
   // Access user state from UserContext
   const { user, isLoggedIn } = useContext(UserContext);
 
-  // Load favorites when user logs in or changes
+  // Load favorites whenever login state or user changes
   useEffect(() => {
-    if (isLoggedIn && user) {
-      const userFavorites = FavoriteService.getFavorites(user.id as number);
+    if (isLoggedIn && user?.id) {
+      const userFavorites = FavoriteService.getFavorites(user.id);
       setFavorites(userFavorites);
     } else {
       setFavorites([]);
     }
   }, [isLoggedIn, user]);
 
-  // Check if product is in favorites
-  const isFavorite = (productId: number): boolean => {
-    return favorites.includes(productId);
-  };
+  // Check if a product is marked as favorite
+  const isFavorite = (productId: number): boolean =>
+    favorites.includes(productId);
 
-  // Toggle favorite state for given product
+  // Add or remove a product from favorites
   const toggleFavorite = (productId: number) => {
-    if (!isLoggedIn || !user) return;
+    if (!isLoggedIn || !user?.id) return;
 
-    const updatedFavorites = FavoriteService.toggleFavorite(
-      user.id as number,
-      productId
-    );
-    setFavorites(updatedFavorites);
+    const updated = FavoriteService.toggleFavorite(user.id, productId);
+    setFavorites(updated);
   };
 
-  // Expose favorite state and actions
   return (
-    <FavoriteContext.Provider
-      value={{
-        favorites,
-        isFavorite,
-        toggleFavorite,
-      }}
-    >
+    <FavoriteContext.Provider value={{ favorites, isFavorite, toggleFavorite }}>
       {children}
     </FavoriteContext.Provider>
   );

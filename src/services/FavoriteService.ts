@@ -1,7 +1,9 @@
 export class FavoriteService {
   private static STORAGE_KEY = "user_favorites";
 
-  // Get favorites for a specific user
+  /**
+   * Retrieves favorite product IDs for given user.
+   */
   static getFavorites(userId: number): number[] {
     try {
       const allFavorites = this.getAllFavorites();
@@ -12,23 +14,18 @@ export class FavoriteService {
     }
   }
 
-  // Toggle favorite status
+  /**
+   * Toggles product's favorite status for specific user.
+   */
   static toggleFavorite(userId: number, productId: number): number[] {
     try {
       const allFavorites = this.getAllFavorites();
       const userFavorites = allFavorites[userId.toString()] || [];
 
-      let updatedFavorites: number[];
+      const updatedFavorites = userFavorites.includes(productId)
+        ? userFavorites.filter((id) => id !== productId)
+        : [...userFavorites, productId];
 
-      if (userFavorites.includes(productId)) {
-        // If product is already favorited, remove it
-        updatedFavorites = userFavorites.filter((id) => id !== productId);
-      } else {
-        // Otherwise, add it to favorites
-        updatedFavorites = [...userFavorites, productId];
-      }
-
-      // Save updated list
       allFavorites[userId.toString()] = updatedFavorites;
       this.saveAllFavorites(allFavorites);
 
@@ -39,13 +36,17 @@ export class FavoriteService {
     }
   }
 
-  // Check if product is currently favorited by user
+  /**
+   * Checks if product is in user's favorites list.
+   */
   static isFavorite(userId: number, productId: number): boolean {
     const userFavorites = this.getFavorites(userId);
     return userFavorites.includes(productId);
   }
 
-  // Clear all favorites for given user (typically on logout)
+  /**
+   * Removes all favorites for given user.
+   */
   static clearUserFavorites(userId: number): void {
     try {
       const allFavorites = this.getAllFavorites();
@@ -56,7 +57,9 @@ export class FavoriteService {
     }
   }
 
-  // Load all users' favorites from localStorage
+  /**
+   * Internal method to load all favorites from localStorage.
+   */
   private static getAllFavorites(): Record<string, number[]> {
     try {
       const stored = localStorage.getItem(this.STORAGE_KEY);
@@ -67,7 +70,9 @@ export class FavoriteService {
     }
   }
 
-  // Save the full favorites object to localStorage
+  /**
+   * Internal method to save all users' favorites to localStorage.
+   */
   private static saveAllFavorites(favorites: Record<string, number[]>): void {
     try {
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(favorites));

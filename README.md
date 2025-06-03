@@ -1,4 +1,4 @@
-Första arkitekt beslutet var att använda TypeScript istället för JavaScript, vilket var första utmaningen då det är mer strikt och tog längre tid i början att förstå varför vissa fel uppstod. Dock de felen TypeScript fångade sparade tid längre fram.
+Första arkitektbeslutet var att använda TypeScript istället för JavaScript, vilket var första utmaningen då det är mer strikt och tog längre tid i början att förstå varför vissa fel uppstod. Dock de felen TypeScript fångade sparade tid längre fram.
 
 Projektet växte snabbt, vilket ledde till ett behov av bättre struktur. Jag införde därför separata mappar för components, pages, hooks, contexts, services, types, validators(använder Zod för validering, enkelt att definiera och återanvända schemas) och routes. Detta förbättrade läsbarheten och gjorde det lättare att underhålla och återanvända kod.
 

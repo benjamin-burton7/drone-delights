@@ -1,35 +1,41 @@
+// hooks/useProducts.ts
 import { useEffect, useState } from "react";
 import { ProductService } from "../services/ProductService";
 import type { Product } from "../types/product";
 
-// Custom hook for loading and managing product list with filtering and search
+// Custom hook for fetching and managing the product list
 export function useProducts() {
-  // Product list fetched from backend/service
+  
+  // State: full product list
   const [products, setProducts] = useState<Product[]>([]);
 
-  // Filter state
+  // State: active category filter
   const [activeFilter, setActiveFilter] = useState("Allt");
 
-  // Search input state
+  // State: search input value
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Load products on mount
+  // Load product data once on component mount
   useEffect(() => {
     const loadProducts = async () => {
-      const fetchedProducts = await ProductService.fetchProducts();
-      setProducts(fetchedProducts);
+      try {
+        const fetchedProducts = await ProductService.fetchProducts();
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error("Failed to load products:", error);
+      }
     };
+
     loadProducts();
   }, []);
 
-  // Derived value: filtered category and search term
+  // Derived: filter products by category and search term
   const filteredProducts = ProductService.filterProducts(
     products,
     activeFilter,
     searchTerm
   );
 
-  // Expose original and filtered product list, plus control setters
   return {
     products,
     filteredProducts,

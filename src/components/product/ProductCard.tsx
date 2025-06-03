@@ -1,10 +1,11 @@
+// components/ProductCard.tsx
 import { useContext } from "react";
 import { QuantitySelector } from "./QuantitySelector";
-import { useCart } from "../contexts/CartContext";
-import { UserContext } from "../contexts/UserContext";
-import { FavoriteContext } from "../contexts/FavoriteContext";
+import { useCart } from "../../contexts/CartContext";
+import { UserContext } from "../../contexts/UserContext";
+import { FavoriteContext } from "../../contexts/FavoriteContext";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import type { ProductCardProps } from "../types/product";
+import type { ProductCardProps } from "../../types/product";
 
 function ProductCard({
   id,
@@ -115,7 +116,6 @@ function ProductCard({
       <div className="flex flex-1 w-full flex-col justify-between p-3">
         <h2 className="text-lg">{name}</h2>
         <div className="mt-2 flex w-full items-center justify-between">
-          
           {/* Price display */}
           <p className="text-sm">{price} SEK</p>
 

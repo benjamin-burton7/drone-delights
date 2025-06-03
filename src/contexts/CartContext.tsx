@@ -1,42 +1,56 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import type { ReactNode } from "react";
+// contexts/CartContext.tsx
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
+
 import { CartService } from "../services/CartService";
 import type { CartContextType, CartItem } from "../types/cart";
-// Create context for cart
+
+// Create context for the cart
 const CartContext = createContext<CartContextType | undefined>(undefined);
-// Ensures the context is used within a provider
+
+// Custom hook to access the cart context
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (!context) throw new Error("useCart must be used within CartProvider");
+  if (!context) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
   return context;
 };
-// CartProvider wraps components that need access to cart state
+
+// Provider component that wraps children with cart state and logic
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  // Initialize cart state from local storage (via service)
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    return CartService.getCart();
-  });
+  // Initialize cart from localStorage (via CartService)
+  const [cart, setCart] = useState<CartItem[]>(() => CartService.getCart());
+
   // Derived value: total number of items in cart
   const totalQuantity = CartService.calculateTotalQuantity(cart);
-  // Persist cart to storage whenever it changes
+
+  // Save cart to localStorage on every change
   useEffect(() => {
     CartService.saveCart(cart);
   }, [cart]);
-  // Update or add an item in the cart
+
+  // Add or update cart item
   const updateItem = (
     product: Omit<CartItem, "quantity">,
     quantity: number
   ) => {
-    setCart((prevCart) => {
-      return CartService.updateCartItem(prevCart, product, quantity);
-    });
+    setCart((prevCart) =>
+      CartService.updateCartItem(prevCart, product, quantity)
+    );
   };
-  // Clear cart and remove from storage
+
+  // Clear cart from state and storage
   const clearCart = () => {
     setCart([]);
     CartService.clearCart();
   };
-  // Provide cart state and actions to children
+
   return (
     <CartContext.Provider
       value={{ cart, totalQuantity, updateItem, clearCart }}

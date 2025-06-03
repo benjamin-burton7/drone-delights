@@ -1,7 +1,12 @@
 import type { Order } from "../types/order";
 
 export class OrderService {
-  // Create and send an order to the backend API
+  /**
+   * Sends new order to backend API
+   *
+   * @param order - Order data to be submitted
+   * @returns Boolean indicating whether order was successfully created
+   */
   static async createOrder(order: Order): Promise<boolean> {
     try {
       const response = await fetch("http://localhost:3001/orders", {

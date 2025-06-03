@@ -1,9 +1,10 @@
-import { createContext, useState, useEffect } from "react";
-import type { ReactNode } from "react";
+// contexts/UserContext.tsx
+import { createContext, useState, useEffect, type ReactNode } from "react";
+
 import { UserService } from "../services/UserService";
 import type { User } from "../types/user";
 
-// Defines the structure of the context that holds user data and auth actions
+// Defines the shape of the user context
 interface UserContextType {
   user: User | null;
   setUser: (user: User | null) => void;
@@ -11,7 +12,7 @@ interface UserContextType {
   logout: () => void;
 }
 
-// Create context with default (non-functional) values
+// Create context with default no-op values
 export const UserContext = createContext<UserContextType>({
   user: null,
   setUser: () => {},
@@ -19,15 +20,14 @@ export const UserContext = createContext<UserContextType>({
   logout: () => {},
 });
 
-// Provides user authentication state and methods to its children
+// Provider component that manages and exposes user authentication state
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  // Internal user state
   const [user, setUser] = useState<User | null>(null);
 
-  // Derived value for login status
+  // Derived value to determine if a user is logged in
   const isLoggedIn = !!user;
 
-  // On mount, attempt to load current user from persistent storage
+  // Load current user from persistent storage when component mounts
   useEffect(() => {
     const currentUser = UserService.getCurrentUser();
     if (currentUser) {
@@ -35,22 +35,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  // Clear user state and session
+  // Clear user state and session data
   const logout = () => {
     setUser(null);
     UserService.logout();
   };
 
-  // Provide user data and auth actions to the component tree
   return (
-    <UserContext.Provider
-      value={{
-        user,
-        setUser,
-        isLoggedIn,
-        logout,
-      }}
-    >
+    <UserContext.Provider value={{ user, setUser, isLoggedIn, logout }}>
       {children}
     </UserContext.Provider>
   );

@@ -1,3 +1,4 @@
+// form/FormInput.tsx
 import React from "react";
 import type { FormInputProps } from "../../types/form"; // justera sökvägen vid behov
 

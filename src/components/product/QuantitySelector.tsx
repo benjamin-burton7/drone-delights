@@ -1,6 +1,7 @@
+// components/QuantitySelector.tsx
 import { BiSolidMinusCircle } from "react-icons/bi";
 import { IoMdAddCircle } from "react-icons/io";
-import type { QuantitySelectorProps } from "../types/quantity";
+import type { QuantitySelectorProps } from "../../types/quantity";
 
 // QuantitySelector handles displaying and updating a numeric quantity
 export const QuantitySelector = ({

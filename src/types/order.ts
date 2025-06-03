@@ -11,11 +11,11 @@ export type Order = {
   date: string;
 };
 
-export interface OrderInfo {
+export type OrderInfo = {
   name: string;
   email: string;
   address: string;
   city: string;
   phone: string;
   paymentMethod: "card" | "swish";
-}
+};

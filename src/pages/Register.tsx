@@ -1,6 +1,6 @@
 import { useRegisterForm } from "../hooks/useRegisterForm";
-import UserInfoForm from "../components/forms/UserInfoForm";
-import FormInput from "../components/forms/FormInput";
+import UserInfoForm from "../components/form/UserInfoForm";
+import FormInput from "../components/form/FormInput";
 
 const Register = () => {
   const {
@@ -22,16 +22,19 @@ const Register = () => {
 
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
-      {/* Registration form */}
       <div className="flex flex-col items-center w-full px-4 md:w-1/2 md:px-0">
+        {/* Page Title */}
         <h1 className="text-center text-6xl font-futura pt-[110px] mb-8 md:text-8xl">
           REGISTRERA
         </h1>
+
+        {/* Form Container */}
         <div className="relative w-full max-w-[548px]">
           <form
             onSubmit={handleRegister}
             className="flex flex-col items-center gap-5 w-full"
           >
+            {/* Input Fields */}
             <UserInfoForm
               name={name}
               setName={setName}
@@ -46,6 +49,7 @@ const Register = () => {
               isRegister
               error={error}
             >
+              {/* Password Field */}
               <FormInput
                 type="password"
                 placeholder="Lösenord"
@@ -54,6 +58,7 @@ const Register = () => {
               />
             </UserInfoForm>
 
+            {/* Submit Button */}
             <div className="flex flex-col w-full md:flex-row md:justify-end">
               <div className="flex w-full justify-end md:w-80">
                 <button
@@ -68,7 +73,7 @@ const Register = () => {
         </div>
       </div>
 
-      {/* Image section */}
+      {/* Image Section (Desktop only) */}
       <div className="hidden h-full md:block md:w-1/2">
         <img
           src="/public/images/register-image.jpg"
