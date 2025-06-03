@@ -1,0 +1,230 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Kanelbulle",
+      "category": "Vetebröd",
+      "price": 28,
+      "image": "/images/login-image.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Kardemummabulle",
+      "category": "Vetebröd",
+      "price": 30,
+      "image": "/images/kardemummabulle.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Vaniljbulle",
+      "category": "Vetebröd",
+      "price": 29,
+      "image": "/images/vaniljbulle.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Toscabulle",
+      "category": "Vetebröd",
+      "price": 31,
+      "image": "/images/toscabulle.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Saffransbulle",
+      "category": "Vetebröd",
+      "price": 32,
+      "image": "/images/saffransbulle.jpg"
+    },
+    {
+      "id": "28",
+      "name": "Croissant",
+      "category": "Vetebröd",
+      "price": 32,
+      "image": "/images/croissant.jpg"
+    },
+    {
+      "id": "29",
+      "name": "Pain au chocolat",
+      "category": "Vetebröd",
+      "price": 32,
+      "image": "/images/pain-au-chocolat.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Butterkaka",
+      "category": "Vetebröd",
+      "price": 35,
+      "image": "/images/butterkaka.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Drömmar",
+      "category": "Småkakor",
+      "price": 18,
+      "image": "/images/drömmar.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Kolasnittar",
+      "category": "Småkakor",
+      "price": 20,
+      "image": "/images/kolasnittar.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Hallongrottar",
+      "category": "Småkakor",
+      "price": 22,
+      "image": "/images/hallongrottar.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Finska pinnar",
+      "category": "Småkakor",
+      "price": 19,
+      "image": "/images/finska-pinnar.jpg"
+    },
+    {
+      "id": "12",
+      "name": "Chokladbiskvi",
+      "category": "Bakelser",
+      "price": 30,
+      "image": "/images/chokladbiskvi.jpg"
+    },
+    {
+      "id": "13",
+      "name": "Mazarin",
+      "category": "Bakelser",
+      "price": 32,
+      "image": "/images/mazarin.jpg"
+    },
+    {
+      "id": "14",
+      "name": "Dammsugare",
+      "category": "Bakelser",
+      "price": 28,
+      "image": "/images/dammsugare.jpg"
+    },
+    {
+      "id": "15",
+      "name": "Budapestbakelse",
+      "category": "Bakelser",
+      "price": 36,
+      "image": "/images/budapestbakelse.jpg"
+    },
+    {
+      "id": "16",
+      "name": "Wienerbröd",
+      "category": "Vetebröd",
+      "price": 34,
+      "image": "/images/wienerbröd.jpg"
+    },
+    {
+      "id": "17",
+      "name": "Prinsesstårta",
+      "category": "Tårtor",
+      "price": 320,
+      "image": "/images/prinsesstårta.jpg"
+    },
+    {
+      "id": "18",
+      "name": "Jordgubbstårta",
+      "category": "Tårtor",
+      "price": 310,
+      "image": "/images/jordgubbstårta.jpg"
+    },
+    {
+      "id": "19",
+      "name": "Chokladtårta",
+      "category": "Tårtor",
+      "price": 330,
+      "image": "/images/chokladtårta.jpg"
+    },
+    {
+      "id": "20",
+      "name": "Citronmarängtårta",
+      "category": "Tårtor",
+      "price": 350,
+      "image": "/images/citronmarängtårta.jpg"
+    },
+    {
+      "id": "22",
+      "name": "Surdegsbröd",
+      "category": "Matbröd",
+      "price": 45,
+      "image": "/images/surdegsbröd.jpg"
+    },
+    {
+      "id": "23",
+      "name": "Focaccia",
+      "category": "Matbröd",
+      "price": 40,
+      "image": "/images/focaccia.jpg"
+    },
+    {
+      "id": "24",
+      "name": "Ciabatta",
+      "category": "Matbröd",
+      "price": 38,
+      "image": "/images/ciabatta.jpg"
+    },
+    {
+      "id": "25",
+      "name": "Rågbröd",
+      "category": "Matbröd",
+      "price": 42,
+      "image": "/images/rågbröd.jpg"
+    },
+    {
+      "id": "26",
+      "name": "Levain",
+      "category": "Matbröd",
+      "price": 46,
+      "image": "/images/levain.jpg"
+    },
+    {
+      "id": "27",
+      "name": "Formfranska",
+      "category": "Matbröd",
+      "price": 37,
+      "image": "/images/formfranska.jpg"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "user",
+      "email": "user@gmail.com",
+      "address": "Norra Bulltoftavägen 65C",
+      "city": "Malmö",
+      "phone": "+123 456 789",
+      "password": "password"
+    }
+  ],
+  "orders": [
+    {
+      "userId": null,
+      "items": [
+        {
+          "productId": "3",
+          "quantity": 2
+        }
+      ],
+      "total": 58,
+      "date": "2025-06-03T07:38:04.805Z",
+      "id": 1
+    },
+    {
+      "userId": null,
+      "items": [
+        {
+          "productId": "19",
+          "quantity": 1
+        }
+      ],
+      "total": 330,
+      "date": "2025-06-03T08:07:50.002Z",
+      "id": 2
+    }
+  ]
+}

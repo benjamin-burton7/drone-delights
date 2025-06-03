@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "OPTIFutura-ExtraBlackCond";
+  src: url("/fonts/OPTIFutura-ExtraBlackCond.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "EmpiraLight";
+  src: url("/fonts/hoftype-empira-light.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  @apply font-sans bg-off-white text-main-orange;
+  color: #ff3b00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
