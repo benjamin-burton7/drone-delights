@@ -2,10 +2,10 @@ import type { Order } from "../types/order";
 
 export class OrderService {
   /**
-   * Sends new order to backend API
+   * Sends a new order to the backend API
    *
-   * @param order - Order data to be submitted
-   * @returns Boolean indicating whether order was successfully created
+   * @param {Object} order - The order data to be submitted
+   * @returns {boolean} True if the order was successfully created, false otherwise
    */
   static async createOrder(order: Order): Promise<boolean> {
     try {

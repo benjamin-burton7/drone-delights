@@ -842,6 +842,30 @@
       "total": 29,
       "date": "2025-06-03T19:47:33.866Z",
       "id": 34
+    },
+    {
+      "userId": null,
+      "items": [
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        },
+        {
+          "productId": "4",
+          "quantity": 1
+        }
+      ],
+      "total": 118,
+      "date": "2025-06-03T20:08:05.223Z",
+      "id": 35
     }
   ]
 }

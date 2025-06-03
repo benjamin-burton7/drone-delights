@@ -2,7 +2,7 @@ export class FavoriteService {
   private static STORAGE_KEY = "user_favorites";
 
   /**
-   * Retrieves favorite product IDs for given user.
+   * Retrieves favorite product IDs for given user
    */
   static getFavorites(userId: number): number[] {
     try {
@@ -15,7 +15,7 @@ export class FavoriteService {
   }
 
   /**
-   * Toggles product's favorite status for specific user.
+   * Toggles product's favorite status for specific user
    */
   static toggleFavorite(userId: number, productId: number): number[] {
     try {

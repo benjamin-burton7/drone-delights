@@ -1,3 +1,4 @@
+// product/ProductSection.tsx
 import ProductCard from "./ProductCard";
 import type { Product } from "../../types/product";
 import { useIsMobile } from "../../hooks/useIsMobile";
@@ -17,7 +18,6 @@ const ProductSection = ({
 
   return (
     <section className="flex flex-col px-6 pb-[60px] md:px-[110px]">
-      {/* Wrapper för rubrik + grid */}
       <div className="w-full max-w-[1200px] mx-auto">
         <h2 className="mb-5 text-3xl font-futura">{title}</h2>
 

@@ -13,10 +13,10 @@ const Confirmation = () => {
   const { cart, clearCart } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   // Extract the customer data from router state
   const state = location.state as OrderInfo | null;
-  
+
   // Local snapshot of the cart for displaying the order summary
   const [cartSnapshot, setCartSnapshot] = useState(cart);
 
@@ -44,16 +44,16 @@ const Confirmation = () => {
       navigate("/notfound");
       return;
     }
-    
+
     // Save a copy of the cart and clear it
     setCartSnapshot(cart);
     clearCart();
-    
+
     // Trigger confetti after a short delay to let the page render
     const confettiTimer = setTimeout(() => {
       triggerConfetti();
     }, 500);
-    
+
     return () => clearTimeout(confettiTimer);
   }, []);
 
@@ -70,7 +70,7 @@ const Confirmation = () => {
     <div className="flex flex-col bg-bg-light min-h-screen px-4 md:px-0">
       {/* Page heading */}
       <PageTitle>BEKRÄFTELSE</PageTitle>
-      
+
       {/* Mobile confirmation message */}
       <div className="text-center mb-10 block md:hidden">
         <h2 className="text-2xl mb-2">Tack för din beställning</h2>
@@ -79,7 +79,7 @@ const Confirmation = () => {
           väg.
         </p>
       </div>
-      
+
       {/* Main content: customer info and cart summary */}
       <div className="mb-[110px] md:mb-0 flex flex-col md:flex-row gap-[44px] justify-center items-center md:items-start">
         {/* Customer information card */}
@@ -91,7 +91,7 @@ const Confirmation = () => {
           phone={phone}
           paymentMethod={paymentMethod}
         />
-        
+
         {/* Order summary */}
         <NarrowContainer>
           <CartSummary
@@ -101,7 +101,7 @@ const Confirmation = () => {
           />
         </NarrowContainer>
       </div>
-      
+
       {/* Desktop confirmation message */}
       <div className="hidden md:block text-center mt-8 pb-[110px]">
         <h2 className="text-3xl mb-5">Tack för din beställning!</h2>
